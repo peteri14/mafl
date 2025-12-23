@@ -56,6 +56,13 @@ interface CachedResponse {
 const CACHE_DURATION = 24 * 60 * 60 * 1000
 
 export default defineEventHandler(async () => {
+  if (process.env.DISABLE_UPDATE_CHECK === 'true') {
+    return {
+      available: false,
+      version: CURRENT_VERSION,
+    }
+  }
+
   const storage = useStorage('updates')
   const logger = useLogger('updates')
   const now = Date.now()
