@@ -2,7 +2,8 @@ const logger = useLogger('websocket')
 
 export default defineWebSocketHandler({
   async open(peer) {
-    logger.info('Peer connected', peer)
+    // logger.info('Peer connected', peer)
+    logger.info('Peer connected', { remoteAddress: peer.remoteAddress })
 
     const storage = useStorage('data')
     await storage.watch(async (_, key) => {
