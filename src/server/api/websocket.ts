@@ -23,6 +23,7 @@ export default defineWebSocketHandler({
     }
   },
   async close(peer) {
-    logger.info('Peer disconnected', peer)
+    // logger.info('Peer disconnected', peer)
+    logger.info('Peer disconnected', { remoteAddress: peer.remoteAddress })
   },
 })
